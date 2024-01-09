@@ -1,36 +1,85 @@
 import React from "react";
-import img from "../Assets/21A95A0340(1).jpg";
-import { FaAngleRight } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { SiLeetcode, SiGeeksforgeeks } from "react-icons/si";
+import { motion } from "framer-motion";
+
 function HeroSection() {
+  const SocialLinks = [
+    {
+      icon: <FaLinkedin />,
+      link: "https://www.linkedin.com/in/mavinnara",
+    },
+    {
+      icon: <FaGithub />,
+      link: "https://github.com/naninara",
+    },
+    {
+      icon: <SiLeetcode />,
+      link: "https://leetcode.com/nmvmanikanta/",
+    },
+    {
+      icon: <SiGeeksforgeeks />,
+      link: "https://auth.geeksforgeeks.org/user/nmvmanikanta/",
+    },
+  ];
   return (
-    <div className="h-screen w-full bg-black text-white">
-      <div className=" max-w-screen-lg mx-auto  flex flex-col items-center justify-center h-full  py-10 px-5 md:flex-row ">
-        <div className="flex flex-col justify-center  h-full gap-4 mt-4 ">
-          <h1 className="text-4xl sm:text-7xl font-bold ">
-            I'M A Full Stack Developer
+    <div
+      className="overflow-x-hidden w-full h-auto flex flex-col-reverse md:flex-row"
+      name="home"
+    >
+      <motion.div
+        className="w-full flex items-center p-4 md:p-20 flex-col gap-6 md:w-1/2"
+        initial={{ x: -100 }}
+        whileInView={{ x: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div>
+          <h1 className=" text-[27px] md:text-[48px] font-sora">
+            Hello i'm <span className="font-[800]">Mavin Nara</span>
           </h1>
-          <p className=" text-gray-500 py-4 max-w-md">
-            Lorem ipsum dolor sit amet. Qui galisum aperiam est sint fugiat eos
-            eius delectus aut nisi galisum! Vel dolorem dolores et nisi animi
-            est laudantium perspiciatis ab optio nisi sed nostrum eligendi sit
-          </p>
-          <div>
-            <button className="group flex cursor-pointer p-3 justify-center items-center text-white w-fit gap-2 rounded-md bg-gradient-to-r from-cyan-400 to-blue-500">
-              Portifolio
-              <span className="group-hover:rotate-90 duration-300">
-                <FaAngleRight />
-              </span>
-            </button>
-          </div>
+          <h1 className=" text-[27px] md:text-[48px] font-sora">
+            <span className="font-[800]">Full Stack</span> Developer
+          </h1>
         </div>
+        <div className="w-auto text-justify  md:px-0">
+          <p>
+            This is Mavin, graduate in Mechanical Engineering from Aditya
+            Engineering College( 2024 ), with strong software programming and
+            developing skills with <b>MERN Stack </b>and <b>Java Backend</b>{" "}
+            with basic Data Structures
+          </p>
+        </div>
+        <div className="flex gap-4 md:gap-[30px]">
+          {SocialLinks.map((ele) => {
+            return (
+              <a
+                href={ele.link}
+                target={"_blank"}
+                rel="noreferrer"
+                className="hover:scale-110 duration-300"
+              >
+                <div className="group w-auto h-auto flex items-center justify-center   border-black border-2 p-[16px] hover:bg-black duration-300 cursor-pointer">
+                  <span className="text-black group-hover:text-white">
+                    {ele.icon}
+                  </span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </motion.div>
+      <motion.div
+        className="w-full flex items-center justify-center md:w-1/2"
+        initial={{ x: 100 }}
+        whileInView={{ x: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         <img
-          src={img}
-          height="300"
-          width={300}
-          alt={"profile img"}
-          className="rounded-2xl mt-2"
+          src="https://res.cloudinary.com/dggryzgok/image/upload/v1704258910/portifolio/etudhajilsnpad3bpwsy.png"
+          alt="profile"
         />
-      </div>
+      </motion.div>
     </div>
   );
 }
